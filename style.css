@@ -1,10 +1,10 @@
-/* Style for the table */
+Style for the table
 table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
   }
-  
+ 
   /* Style for table headers */
   th {
     background-color: #f2f2f2;
@@ -12,30 +12,33 @@ table {
     padding: 10px;
     border: 1px solid #ddd;
   }
-  
+ 
   /* Style for table rows */
   tr {
     border: 1px solid #ddd;
   }
-  
+ 
   /* Style for even rows */
   tr:nth-child(even) {
     background-color: #f2f2f2;
   }
-  
+ 
   /* Style for table cells */
   td {
     padding: 10px;
     border: 1px solid #ddd;
   }
-  
+ 
   /* Style for links within the table */
   a {
     color: red;
     text-decoration: none;
   }
-  
+ 
   a:hover {
     text-decoration: underline;
   }
-  
+ 
+
+
+
