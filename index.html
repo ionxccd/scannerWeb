@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
-
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
    <script src="https://cdn.tailwindcss.com"></script>
-   <script src="./js/main.js" type="application/javascript"></script>
    <script src="https://apis.google.com/js/api.js"></script>
    <link rel="stylesheet" href="./style.css"/>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
@@ -76,93 +72,18 @@
 
                <div class="relative overflow-x-auto mt-5">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <!-- <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">
-                                Student ID
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Student Name
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Date
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Action
-                            </th>
-                        </tr>
-                    </thead> -->
                     <tbody id="table-div">
 
                     </tbody>
                 </table>
             </div>
             
-            <script>
-                // Function to fetch and populate data from the Sheetsu API
-                function fetchData() {
-                    const currentDateTime = moment();
-                    console.log(currentDateTime.format("MM/DD/YYYY"));
-                    let url = 'https://api.sheety.co/84266a79fba1fe4d2512eccd7c54eced/stemClub/formData?filter[computerDate]=' + currentDateTime.format("MM/DD/YYYY");
-                    fetch(url)
-                        .then((response) => response.json())
-                        .then(json => {
-                            // Call a function to create a table from the fetched data
-                            createTable(json.formData);
-                        });
-                    }
-
-                // Function to create a table from the fetched data
-                function createTable(data) {
-                    // Get a reference to the div where you want to place the table
-                    const tableDiv = document.getElementById("table-div");
-
-                    const keyToCustomName = {
-        "Student ID": "Student ID",
-        "Student Name": "Student Name",
-        "Date": "Custom Date Name",
-        "Action": "Custom Action Name"
-    };
-                    
-                    // Create a table element
-                    const table = document.createElement("table");
-                    
-                    // Create a header row
-                    const headerRow = table.insertRow(0);
-                    for (let key in data[0]) {
-                        const th = document.createElement("th");
-                        th.innerHTML = key;
-                        headerRow.appendChild(th);
-                    }
-                    
-                    // Create rows for each data item
-                    for (let i = 0; i < data.length; i++) {
-                        const row = table.insertRow(i + 1);
-                        for (let key in data[i]) {
-                            const cell = row.insertCell();
-                            cell.innerHTML = data[i][key];
-                        }
-                    }
-
-                    // row.className = 'table-row';
-                    // timestampCell.className = 'table-cell';
-                    // schoolIDCell.className = 'table-cell';
-                    // nameCell.className = 'table-cell';
-
-                    
-                    // Append the table to the div
-                    tableDiv.appendChild(table);
-                }
-
-                // Call the fetchData function to populate the table with data
+            <script type="text/javascript" src="main.js"></script>
+            <script lang="javascript">
                 fetchData();
             </script>            
        </div>
    </div>
-   <script src="./js/main.js" type="application/javascript"></script>
-   <script>
-       myFunction();
-   </script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
 </body>
 
