@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Read URL Parameters</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <h1>Student Name: <span id="name"></span></h1>
+    <h2>Date: <span id="age"></span></h2>
+    <a href="https://sparkly-kataifi-e7a4c9.netlify.app">
+        <button id="backToLogin" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" style="display: none">Back to Login</button>
+    </a>
+
+    <div id="message"></div>
+
+    <script>
+        // Function to get URL parameters
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Get the 'name' and 'age' parameters from the URL
+        var nameParam = getParameterByName('name');
+        var ageParam = getParameterByName('age');
+
+        // Check if the 'user' parameter exists
+        var userParam = getParameterByName('user');
+
+        if (userParam === "true") {
+            // User exists, display a greeting
+            document.getElementById('name').textContent = nameParam;
+            document.getElementById('message').textContent = 'Hi, ' + nameParam;
+            document.getElementById('age').textContent = ageParam;
+            document.getElementById('message').innerHTML = "Hi, " + nameParam + "!";
+            document.getElementById('backToLogin').style.display = 'block';
+        } else {
+            // User doesn't exist, display a message and a back to login button
+            document.getElementById('message').innerHTML = "User doesn't exist.";
+            var backToLoginButton = document.createElement('button');
+            backToLoginButton.textContent = "Back to Login";
+            backToLoginButton.onclick = function() {
+                // Redirect the user back to the login page (replace with the actual login page URL)
+                window.location.href = "login.html";
+            };
+            document.getElementById('message').appendChild(backToLoginButton);
+        }
+    </script>
+</body>
+</html>
