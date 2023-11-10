@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Read URL Parameters</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .formData{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="max-w-md mx-auto p-4">
+
+        <h1 class="text-lg font-medium mb-2 formData">Student Name: <span id="name" class="font-semibold"></span></h1>
+      
+        <h2 class="text-gray-600 mb-4 formData">Date: <span id="age" class="font-semibold"></span></h2>  
+      
+        <div id="message" class="text-sm text-gray-800 mb-4"></div>
+      
+        <div id="succ" class="text-green-600 font-medium my-3"></div>
+      
+        
+        <a href="https://sparkly-kataifi-e7a4c9.netlify.app">
+            <button id="backToLogin" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Back to Login</button>
+        </a>
+    </div>
+
+    <div id="message"></div>
+
+    <script>
+        // Function to get URL parameters
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Get the 'name' and 'agse' parameters from the URL
+        var nameParam = getParameterByName('name');
+        var ageParam = getParameterByName('age');
+        var userParam = getParameterByName('user');
+
+        if (userParam === "true") {
+            // User exists, display a greeting
+            document.getElementById('name').textContent = nameParam;
+            document.getElementById('age').textContent = ageParam;
+            document.getElementById('succ').innerHTML = "You're logged in!";
+            document.getElementById('backToLogin').style.display = 'block';
+        } else {
+            // User doesn't exist, display a message and a back to login button
+            document.getElementById('message').innerHTML = `
+                        User doesn't exist. 
+                    \n You may not be registered in STEM Club. 
+                    \n Please talk to Mr. Safko for registration`;
+            var backToLoginButton = document.createElement('button');
+            var formDataElements = document.getElementsByClassName('formData');
+            for (var i = 0; i < formDataElements.length; i++) {
+                formDataElements[i].style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
