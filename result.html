@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Read URL Parameters</title>
+    <title>STEM Club</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .formData{
@@ -14,7 +14,7 @@
 
         <h1 class="text-lg font-medium mb-2 formData">Student Name: <span id="name" class="font-semibold"></span></h1>
       
-        <h2 class="text-gray-600 mb-4 formData">Date: <span id="age" class="font-semibold"></span></h2>  
+        <h2 class="text-gray-600 mb-4 formData">Date: <span id="date" class="font-semibold"></span></h2>  
       
         <div id="message" class="text-sm text-gray-800 mb-4"></div>
       
@@ -42,13 +42,13 @@
 
         // Get the 'name' and 'agse' parameters from the URL
         var nameParam = getParameterByName('name');
-        var ageParam = getParameterByName('age');
+        var dateParam = getParameterByName('date');
         var userParam = getParameterByName('user');
 
         if (userParam === "true") {
             // User exists, display a greeting
             document.getElementById('name').textContent = nameParam;
-            document.getElementById('age').textContent = ageParam;
+            document.getElementById('date').textContent = dateParam;
             document.getElementById('succ').innerHTML = "You're logged in!";
             document.getElementById('backToLogin').style.display = 'block';
         } else {
